@@ -1,3 +1,5 @@
+package com.primeirafase;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -7,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import java.time.Duration;
 
-public class PrimeiraFase {
+public class MainApplication {
 
     public static void main(String[] args) {
 
