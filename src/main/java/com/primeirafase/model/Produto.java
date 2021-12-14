@@ -4,15 +4,21 @@ import java.math.BigDecimal;
 
 public class Produto {
 
+    Long id;
     BigDecimal valor;
     String descricao;
     String imagem;
 
-    public Produto(BigDecimal valor, String descricao, String imagem) {
+    public Produto(Long id, BigDecimal valor, String descricao, String imagem) {
+        this.id = id;
         this.valor = valor;
         this.descricao = descricao;
         this.imagem = imagem;
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public BigDecimal getValor() {
         return valor;

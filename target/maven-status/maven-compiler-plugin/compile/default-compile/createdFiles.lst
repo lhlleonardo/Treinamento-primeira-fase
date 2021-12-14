@@ -1,0 +1,5 @@
+com\primeirafase\configs\DriverConfig.class
+com\primeirafase\MainApplication.class
+com\primeirafase\model\Demanda.class
+com\primeirafase\service\BuscaProduto.class
+com\primeirafase\model\Produto.class
