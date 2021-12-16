@@ -9,6 +9,9 @@ public class Demanda {
     String busca;
     List<Produto> produtos = new LinkedList<>();
 
+    public Demanda() {
+    }
+
     public Demanda(Long qtdeItens, String busca, List<Produto> produtos) {
         this.qtdeItens = qtdeItens;
         this.busca = busca;

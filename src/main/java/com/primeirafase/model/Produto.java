@@ -9,6 +9,10 @@ public class Produto {
     String descricao;
     String imagem;
 
+
+    public Produto() {
+    }
+
     public Produto(Long id, BigDecimal valor, String descricao, String imagem) {
         this.id = id;
         this.valor = valor;
