@@ -5,24 +5,18 @@ import java.util.List;
 
 public class Demanda {
 
-    Long qtdeItens;
+    String qtdeItens;
     String busca;
     List<Produto> produtos = new LinkedList<>();
 
     public Demanda() {
     }
 
-    public Demanda(Long qtdeItens, String busca, List<Produto> produtos) {
-        this.qtdeItens = qtdeItens;
-        this.busca = busca;
-        this.produtos = produtos;
-    }
-
-    public Long getQtdeItens() {
+    public String getQtdeItens() {
         return qtdeItens;
     }
 
-    public void setQtdeItens(Long qtdeItens) {
+    public void setQtdeItens(String qtdeItens) {
         this.qtdeItens = qtdeItens;
     }
 
@@ -42,10 +36,21 @@ public class Demanda {
         this.produtos = produtos;
     }
 
-    public String buscarDemanda(String palavra){
+    public void adicionaProduto(Produto produto){
+        this.produtos.add(produto);
+    }
 
-        palavra = "Kindle";
+    public String retornarBusca() {
 
-        return palavra;
+        StringBuilder retorno = new StringBuilder("Você buscou pelo conteúdo '" + busca +
+                "' retornando " + qtdeItens +
+                "(s). \n" +
+                "A pesquisa apresentou os seguintes itens: \n");
+
+        for (Produto p : produtos) {
+            retorno.append(p.retornaProduto());
+        }
+
+        return retorno.toString();
     }
 }

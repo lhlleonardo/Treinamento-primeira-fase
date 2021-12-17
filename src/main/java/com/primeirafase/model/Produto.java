@@ -1,34 +1,25 @@
 package com.primeirafase.model;
 
-import java.math.BigDecimal;
-
 public class Produto {
 
-    Long id;
-    BigDecimal valor;
+    String valor;
     String descricao;
     String imagem;
-
 
     public Produto() {
     }
 
-    public Produto(Long id, BigDecimal valor, String descricao, String imagem) {
-        this.id = id;
+    public Produto(String valor, String descricao, String imagem) {
         this.valor = valor;
         this.descricao = descricao;
         this.imagem = imagem;
     }
 
-    public Long getId() { return id; }
-
-    public void setId(Long id) { this.id = id; }
-
-    public BigDecimal getValor() {
+    public String getValor() {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
@@ -46,5 +37,9 @@ public class Produto {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String retornaProduto() {
+        return valor + " | " + descricao + " | " + imagem + ".\n";
     }
 }
