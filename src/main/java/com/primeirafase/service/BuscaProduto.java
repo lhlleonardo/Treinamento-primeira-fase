@@ -23,7 +23,7 @@ public class BuscaProduto {
 
         driverConfig.get("https://www.mercadolivre.com.br/");
 
-        wait.until(presenceOfElementLocated(By.id("cb1-edit"))).sendKeys(this.buscarItem("Kindle") + Keys.ENTER);
+        wait.until(presenceOfElementLocated(By.id("cb1-edit"))).sendKeys(this.buscarItem("kindle branco") + Keys.ENTER);
 
         String palavraBuscada = wait.until(presenceOfElementLocated(By.xpath("//h1[@class='ui-search-breadcrumb__title']"))).getAttribute("textContent");
 
@@ -41,7 +41,7 @@ public class BuscaProduto {
 
             try {
                 Thread.sleep(3000);
-            }catch (InterruptedException e) {}
+            } catch (InterruptedException e) {}
 
             List<WebElement> resultsWait = wait.until(presenceOfAllElementsLocatedBy(By.xpath("//div[@class='ui-search-result__wrapper']")));
 
@@ -62,7 +62,15 @@ public class BuscaProduto {
                 demanda.adicionaProduto(new Produto(precoProduto, descricaoProduto, imagemProduto));
             }
 
-            if (wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']"))).isDisplayed()) {
+//            try {
+//                wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']"))).click();
+//            } catch (NoSuchElementException e) {
+//                continue;
+//            }
+
+
+
+            if (driverConfig.findElements(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']")).size() != 0) {
                 wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']"))).click();
             } else {
                 continue;
