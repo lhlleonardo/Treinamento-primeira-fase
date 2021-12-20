@@ -39,11 +39,15 @@ public class BuscaProduto {
 
         for (int i = 1; i <= Integer.parseInt(totalPaginas) ; i++) {
 
+            try {
+                Thread.sleep(3000);
+            }catch (InterruptedException e) {}
+
             List<WebElement> resultsWait = wait.until(presenceOfAllElementsLocatedBy(By.xpath("//div[@class='ui-search-result__wrapper']")));
 
             for (WebElement resultado : resultsWait) {
 
-                wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='ui-search-price ui-search-price--size-medium ui-search-item__group__element']//div[@class='ui-search-price__second-line']//span[@class='price-tag-amount']")));
+                JavascriptExecutor js = (JavascriptExecutor) driverConfig;
 
                 String precoProduto = resultado.findElement(By.xpath(".//div[@class='ui-search-price ui-search-price--size-medium ui-search-item__group__element']//div[@class='ui-search-price__second-line']//span[@class='price-tag-amount']")).getAttribute("textContent");
 
@@ -52,8 +56,6 @@ public class BuscaProduto {
                 String imagemProduto = resultado.findElement(By.xpath(".//img[@class='ui-search-result-image__element']")).getAttribute("src");
 
                 WebElement imagemProdutoCarregar = resultado.findElement(By.xpath(".//img[@class='ui-search-result-image__element']"));
-
-                JavascriptExecutor js = (JavascriptExecutor) driverConfig;
 
                 js.executeScript("arguments[0].scrollIntoView();", imagemProdutoCarregar);
 
