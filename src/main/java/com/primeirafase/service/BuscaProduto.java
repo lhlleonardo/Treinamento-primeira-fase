@@ -3,6 +3,7 @@ package com.primeirafase.service;
 import com.primeirafase.model.Demanda;
 import com.primeirafase.model.Produto;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -42,6 +43,8 @@ public class BuscaProduto {
 
             for (WebElement resultado : resultsWait) {
 
+                wait.until(ExpectedConditions.elementToBeClickable(By.xpath(".//div[@class='ui-search-price ui-search-price--size-medium ui-search-item__group__element']//div[@class='ui-search-price__second-line']//span[@class='price-tag-amount']")));
+
                 String precoProduto = resultado.findElement(By.xpath(".//div[@class='ui-search-price ui-search-price--size-medium ui-search-item__group__element']//div[@class='ui-search-price__second-line']//span[@class='price-tag-amount']")).getAttribute("textContent");
 
                 String descricaoProduto = resultado.findElement(By.xpath(".//div[@class='ui-search-result__content-wrapper']//h2[@class='ui-search-item__title ui-search-item__group__element']")).getAttribute("textContent");
@@ -57,8 +60,8 @@ public class BuscaProduto {
                 demanda.adicionaProduto(new Produto(precoProduto, descricaoProduto, imagemProduto));
             }
 
-            if (wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link']"))).isDisplayed()) {
-                wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link']"))).click();
+            if (wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']"))).isDisplayed()) {
+                wait.until(presenceOfElementLocated(By.xpath("//a[@class='andes-pagination__link ui-search-link'][@title='Seguinte']"))).click();
             } else {
                 continue;
             }
